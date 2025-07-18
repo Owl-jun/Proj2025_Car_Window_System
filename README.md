@@ -1,4 +1,4 @@
-# SmartCarWindow
+# Proj2025_Car_Window_System
 전장 S/W 미니 프로젝트 (창문 제어)
 
 # 프로젝트 개요

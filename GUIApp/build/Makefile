@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/raspi/owljun/MyQtApp
+CMAKE_SOURCE_DIR = /home/raspi/owljun/Proj2025_Car_Window_System/GUIApp
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/raspi/owljun/MyQtApp/build
+CMAKE_BINARY_DIR = /home/raspi/owljun/Proj2025_Car_Window_System/GUIApp/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/raspi/owljun/MyQtApp/build/CMakeFiles /home/raspi/owljun/MyQtApp/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/raspi/owljun/Proj2025_Car_Window_System/GUIApp/build/CMakeFiles /home/raspi/owljun/Proj2025_Car_Window_System/GUIApp/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/raspi/owljun/MyQtApp/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/raspi/owljun/Proj2025_Car_Window_System/GUIApp/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,78 +117,56 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named MyQtApp
+# Target rules for targets named MyLib
 
 # Build rule for target.
-MyQtApp: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyQtApp
-.PHONY : MyQtApp
+MyLib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyLib
+.PHONY : MyLib
 
 # fast build rule for target.
-MyQtApp/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyQtApp.dir/build.make CMakeFiles/MyQtApp.dir/build
-.PHONY : MyQtApp/fast
+MyLib/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/MyLib.dir/build.make src/CMakeFiles/MyLib.dir/build
+.PHONY : MyLib/fast
 
 #=============================================================================
-# Target rules for targets named MyQtApp_autogen
+# Target rules for targets named MyLib_autogen
 
 # Build rule for target.
-MyQtApp_autogen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyQtApp_autogen
-.PHONY : MyQtApp_autogen
+MyLib_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyLib_autogen
+.PHONY : MyLib_autogen
 
 # fast build rule for target.
-MyQtApp_autogen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyQtApp_autogen.dir/build.make CMakeFiles/MyQtApp_autogen.dir/build
-.PHONY : MyQtApp_autogen/fast
+MyLib_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/MyLib_autogen.dir/build.make src/CMakeFiles/MyLib_autogen.dir/build
+.PHONY : MyLib_autogen/fast
 
-MyQtApp_autogen/mocs_compilation.o: MyQtApp_autogen/mocs_compilation.cpp.o
-.PHONY : MyQtApp_autogen/mocs_compilation.o
+#=============================================================================
+# Target rules for targets named MyApp
 
-# target to build an object file
-MyQtApp_autogen/mocs_compilation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyQtApp.dir/build.make CMakeFiles/MyQtApp.dir/MyQtApp_autogen/mocs_compilation.cpp.o
-.PHONY : MyQtApp_autogen/mocs_compilation.cpp.o
+# Build rule for target.
+MyApp: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyApp
+.PHONY : MyApp
 
-MyQtApp_autogen/mocs_compilation.i: MyQtApp_autogen/mocs_compilation.cpp.i
-.PHONY : MyQtApp_autogen/mocs_compilation.i
+# fast build rule for target.
+MyApp/fast:
+	$(MAKE) $(MAKESILENT) -f main/CMakeFiles/MyApp.dir/build.make main/CMakeFiles/MyApp.dir/build
+.PHONY : MyApp/fast
 
-# target to preprocess a source file
-MyQtApp_autogen/mocs_compilation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyQtApp.dir/build.make CMakeFiles/MyQtApp.dir/MyQtApp_autogen/mocs_compilation.cpp.i
-.PHONY : MyQtApp_autogen/mocs_compilation.cpp.i
+#=============================================================================
+# Target rules for targets named MyApp_autogen
 
-MyQtApp_autogen/mocs_compilation.s: MyQtApp_autogen/mocs_compilation.cpp.s
-.PHONY : MyQtApp_autogen/mocs_compilation.s
+# Build rule for target.
+MyApp_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyApp_autogen
+.PHONY : MyApp_autogen
 
-# target to generate assembly for a file
-MyQtApp_autogen/mocs_compilation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyQtApp.dir/build.make CMakeFiles/MyQtApp.dir/MyQtApp_autogen/mocs_compilation.cpp.s
-.PHONY : MyQtApp_autogen/mocs_compilation.cpp.s
-
-main.o: main.cpp.o
-.PHONY : main.o
-
-# target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyQtApp.dir/build.make CMakeFiles/MyQtApp.dir/main.cpp.o
-.PHONY : main.cpp.o
-
-main.i: main.cpp.i
-.PHONY : main.i
-
-# target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyQtApp.dir/build.make CMakeFiles/MyQtApp.dir/main.cpp.i
-.PHONY : main.cpp.i
-
-main.s: main.cpp.s
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyQtApp.dir/build.make CMakeFiles/MyQtApp.dir/main.cpp.s
-.PHONY : main.cpp.s
+# fast build rule for target.
+MyApp_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f main/CMakeFiles/MyApp_autogen.dir/build.make main/CMakeFiles/MyApp_autogen.dir/build
+.PHONY : MyApp_autogen/fast
 
 # Help Target
 help:
@@ -198,14 +176,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... MyQtApp_autogen"
-	@echo "... MyQtApp"
-	@echo "... MyQtApp_autogen/mocs_compilation.o"
-	@echo "... MyQtApp_autogen/mocs_compilation.i"
-	@echo "... MyQtApp_autogen/mocs_compilation.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... MyApp_autogen"
+	@echo "... MyLib_autogen"
+	@echo "... MyApp"
+	@echo "... MyLib"
 .PHONY : help
 
 

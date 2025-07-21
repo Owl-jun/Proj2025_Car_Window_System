@@ -6,7 +6,7 @@
 |폴더명|설명|
 |:--:|:--:|
 |[Arduino](https://github.com/Owl-jun/Proj2025_Car_Window_System/tree/main/Arduino)|아두이노 소스코드|
-|GUIAPP|Qt GUI App 소스코드|
+|[GUIAPP](https://github.com/Owl-jun/Proj2025_Car_Window_System/tree/main/GUIApp)|Qt GUI App 소스코드|
 |[MqTTPubApp](https://github.com/Owl-jun/Proj2025_Car_Window_System/tree/main/MqTTPubApp)|Python 시리얼 통신 및 MqTT Pub App 소스코드|
 
 

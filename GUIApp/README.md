@@ -6,10 +6,13 @@
 
 ## CMake 빌드 관련
 
-- 이전 CMakeCache 삭제하기
+- 이전 CMakeCache 삭제 후 빌드
     ```bash
     rm -rf build/
     cmake -Bbuild -S. -DCMAKE_PREFIX_PATH="/usr/local/lib/cmake"
+    # 혹은
+    cmake -B . -S build
+    cmake -B . -S build --fresh # 캐시 삭제 버전
     ```
 
 - 빌드

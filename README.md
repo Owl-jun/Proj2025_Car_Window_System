@@ -63,3 +63,48 @@ export DISPLAY=:0
 
 ```
   
+
+### Git 자주사용 명령어
+
+```
+
+# 상태확인
+git status
+
+# 추가
+git add .
+
+# 커밋 & 푸쉬
+git commit -m "comment"
+git push
+
+
+# SSH 에서 사용하기 위한 설정
+
+ssh-keygen -t ed25519 -C "your_email@example.com"
+
+# Enter
+
+# SSH 키 출력 (공개 키)
+cat ~/.ssh/id_ed25519.pub
+
+# 출력 내용 복사 이후
+# Github -> 우상단 프로필 -> Settings -> SSH and GPG keys -> Add SSH Key -> 복사내용 붙혀넣기
+
+ssh -T git@github.com
+# yes -> Enter
+
+# HTTPS -> SSH 변경
+cd 작업디렉터리
+git remote -v # 현재 상태 확인
+git remote set-url origin git@github.com:사용자이름/저장소이름.git # 상태 변경
+
+# git 전역설정
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+
+# 확인
+git config --global user.name
+git config --global user.email
+
+```

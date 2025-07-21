@@ -166,29 +166,77 @@ MyApp_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/MyApp_autogen/mocs_compilation.cpp.s
 .PHONY : MyApp_autogen/mocs_compilation.cpp.s
 
-main.o: main.cpp.o
-.PHONY : main.o
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
+
+src/mainwindow.o: src/mainwindow.cpp.o
+.PHONY : src/mainwindow.o
+
+# target to build an object file
+src/mainwindow.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/src/mainwindow.cpp.o
+.PHONY : src/mainwindow.cpp.o
+
+src/mainwindow.i: src/mainwindow.cpp.i
+.PHONY : src/mainwindow.i
+
+# target to preprocess a source file
+src/mainwindow.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/src/mainwindow.cpp.i
+.PHONY : src/mainwindow.cpp.i
+
+src/mainwindow.s: src/mainwindow.cpp.s
+.PHONY : src/mainwindow.s
+
+# target to generate assembly for a file
+src/mainwindow.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/src/mainwindow.cpp.s
+.PHONY : src/mainwindow.cpp.s
+
+src/mqttclientwrapper.o: src/mqttclientwrapper.cpp.o
+.PHONY : src/mqttclientwrapper.o
+
+# target to build an object file
+src/mqttclientwrapper.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/src/mqttclientwrapper.cpp.o
+.PHONY : src/mqttclientwrapper.cpp.o
+
+src/mqttclientwrapper.i: src/mqttclientwrapper.cpp.i
+.PHONY : src/mqttclientwrapper.i
+
+# target to preprocess a source file
+src/mqttclientwrapper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/src/mqttclientwrapper.cpp.i
+.PHONY : src/mqttclientwrapper.cpp.i
+
+src/mqttclientwrapper.s: src/mqttclientwrapper.cpp.s
+.PHONY : src/mqttclientwrapper.s
+
+# target to generate assembly for a file
+src/mqttclientwrapper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/src/mqttclientwrapper.cpp.s
+.PHONY : src/mqttclientwrapper.cpp.s
 
 # Help Target
 help:
@@ -203,9 +251,15 @@ help:
 	@echo "... MyApp_autogen/mocs_compilation.o"
 	@echo "... MyApp_autogen/mocs_compilation.i"
 	@echo "... MyApp_autogen/mocs_compilation.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/mainwindow.o"
+	@echo "... src/mainwindow.i"
+	@echo "... src/mainwindow.s"
+	@echo "... src/mqttclientwrapper.o"
+	@echo "... src/mqttclientwrapper.i"
+	@echo "... src/mqttclientwrapper.s"
 .PHONY : help
 
 

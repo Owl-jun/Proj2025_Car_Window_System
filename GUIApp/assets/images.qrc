@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>BG_CENTER.png</file>
+        <file>Window_Down.png</file>
+        <file>Window_STOP.png</file>
+        <file>Window_UP.png</file>
+    </qresource>
+</RCC>

@@ -11,7 +11,7 @@
 
 
 # 프로젝트 개요
-<img width="1715" height="1037" alt="image" src="https://github.com/user-attachments/assets/7fb0bd89-5bc2-4af2-8d71-f4545f968cac" />
+![](https://velog.velcdn.com/images/owljun/post/441c1786-931c-4973-81e8-78ade89c0ac8/image.png)
 
 ## 프로젝트 구성 (H/W)
 
@@ -22,6 +22,13 @@
 - 스텝 모터 & 드라이버
 - 자동차 목업
 - USB A to B (시리얼 통신)
+
+## 프로젝트 구성 (N/W)
+
+- IPTIME 공유기 (AP)
+- MQTT Server (Windows 11 64bit Desktop)
+- MQTT Pub APP (Raspi 4 OS 64bit)
+- Sensing Data (Arduino Uno)
 
 
 ## 개발 환경 구축

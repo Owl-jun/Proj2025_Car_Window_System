@@ -1,7 +1,7 @@
 # Arduino Uno Rain_Sensor Src
 DHT11 , 비 감지 센서 센싱 데이터 -> Serial 통신으로 Raspi 4 전송하는 소스코드 입니다.
 
-## 특징
+## 개요
 
 - 가독성 및 유지보수를 위한 define 및 주석 코드스타일
 

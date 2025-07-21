@@ -25,6 +25,7 @@ sudo apt update && sudo apt upgrade -y
 
 # venv 환경설정
 mkdir 작업디렉터리
+python3 -m venv venv
 source .venv/bin/activate
 
 # paho-mqtt 설치

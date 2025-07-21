@@ -1,0 +1,8 @@
+{
+    "MQTT" : {
+        "IP" : "192.168.0.2",
+        "PORT" : 1883,
+        "TOPIC" : "sensor/rain_dht",
+        "CLIENT_ID" : "RaspberryPi_SensorPublisher"
+    }
+}

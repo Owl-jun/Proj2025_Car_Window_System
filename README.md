@@ -24,14 +24,6 @@
 - 자동차 목업
 - USB A to B (시리얼 통신)
 
-## 프로젝트 구성 (N/W)
-
-- IPTIME 공유기 (AP)
-- MQTT Server (Windows 11 64bit Desktop)
-- MQTT Pub APP (Raspi 4 OS 64bit)
-- Sensing Data (Arduino Uno)
-
-
 ## 개발 환경 구축
 
 - python : 기본 python3 + venv 활용 가상환경

@@ -1,10 +1,4 @@
+/home/raspi/owljun/Proj2025_Car_Window_System/GUIApp/build/CMakeFiles/MyApp.dir
 /home/raspi/owljun/Proj2025_Car_Window_System/GUIApp/build/CMakeFiles/edit_cache.dir
 /home/raspi/owljun/Proj2025_Car_Window_System/GUIApp/build/CMakeFiles/rebuild_cache.dir
-/home/raspi/owljun/Proj2025_Car_Window_System/GUIApp/build/src/CMakeFiles/MyLib.dir
-/home/raspi/owljun/Proj2025_Car_Window_System/GUIApp/build/src/CMakeFiles/edit_cache.dir
-/home/raspi/owljun/Proj2025_Car_Window_System/GUIApp/build/src/CMakeFiles/rebuild_cache.dir
-/home/raspi/owljun/Proj2025_Car_Window_System/GUIApp/build/src/CMakeFiles/MyLib_autogen.dir
-/home/raspi/owljun/Proj2025_Car_Window_System/GUIApp/build/main/CMakeFiles/MyApp.dir
-/home/raspi/owljun/Proj2025_Car_Window_System/GUIApp/build/main/CMakeFiles/edit_cache.dir
-/home/raspi/owljun/Proj2025_Car_Window_System/GUIApp/build/main/CMakeFiles/rebuild_cache.dir
-/home/raspi/owljun/Proj2025_Car_Window_System/GUIApp/build/main/CMakeFiles/MyApp_autogen.dir
+/home/raspi/owljun/Proj2025_Car_Window_System/GUIApp/build/CMakeFiles/MyApp_autogen.dir

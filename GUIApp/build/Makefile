@@ -117,32 +117,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named MyLib
-
-# Build rule for target.
-MyLib: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyLib
-.PHONY : MyLib
-
-# fast build rule for target.
-MyLib/fast:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/MyLib.dir/build.make src/CMakeFiles/MyLib.dir/build
-.PHONY : MyLib/fast
-
-#=============================================================================
-# Target rules for targets named MyLib_autogen
-
-# Build rule for target.
-MyLib_autogen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MyLib_autogen
-.PHONY : MyLib_autogen
-
-# fast build rule for target.
-MyLib_autogen/fast:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/MyLib_autogen.dir/build.make src/CMakeFiles/MyLib_autogen.dir/build
-.PHONY : MyLib_autogen/fast
-
-#=============================================================================
 # Target rules for targets named MyApp
 
 # Build rule for target.
@@ -152,7 +126,7 @@ MyApp: cmake_check_build_system
 
 # fast build rule for target.
 MyApp/fast:
-	$(MAKE) $(MAKESILENT) -f main/CMakeFiles/MyApp.dir/build.make main/CMakeFiles/MyApp.dir/build
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/build
 .PHONY : MyApp/fast
 
 #=============================================================================
@@ -165,8 +139,56 @@ MyApp_autogen: cmake_check_build_system
 
 # fast build rule for target.
 MyApp_autogen/fast:
-	$(MAKE) $(MAKESILENT) -f main/CMakeFiles/MyApp_autogen.dir/build.make main/CMakeFiles/MyApp_autogen.dir/build
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp_autogen.dir/build.make CMakeFiles/MyApp_autogen.dir/build
 .PHONY : MyApp_autogen/fast
+
+MyApp_autogen/mocs_compilation.o: MyApp_autogen/mocs_compilation.cpp.o
+.PHONY : MyApp_autogen/mocs_compilation.o
+
+# target to build an object file
+MyApp_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/MyApp_autogen/mocs_compilation.cpp.o
+.PHONY : MyApp_autogen/mocs_compilation.cpp.o
+
+MyApp_autogen/mocs_compilation.i: MyApp_autogen/mocs_compilation.cpp.i
+.PHONY : MyApp_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+MyApp_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/MyApp_autogen/mocs_compilation.cpp.i
+.PHONY : MyApp_autogen/mocs_compilation.cpp.i
+
+MyApp_autogen/mocs_compilation.s: MyApp_autogen/mocs_compilation.cpp.s
+.PHONY : MyApp_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+MyApp_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/MyApp_autogen/mocs_compilation.cpp.s
+.PHONY : MyApp_autogen/mocs_compilation.cpp.s
+
+main.o: main.cpp.o
+.PHONY : main.o
+
+# target to build an object file
+main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/main.cpp.o
+.PHONY : main.cpp.o
+
+main.i: main.cpp.i
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyApp.dir/build.make CMakeFiles/MyApp.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -177,9 +199,13 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... MyApp_autogen"
-	@echo "... MyLib_autogen"
 	@echo "... MyApp"
-	@echo "... MyLib"
+	@echo "... MyApp_autogen/mocs_compilation.o"
+	@echo "... MyApp_autogen/mocs_compilation.i"
+	@echo "... MyApp_autogen/mocs_compilation.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 

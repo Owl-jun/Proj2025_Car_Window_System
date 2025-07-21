@@ -13,12 +13,12 @@ import json # JSON 형식으로 데이터 전송을 위해 임포트
 import serial
 
 # --- 시리얼 포트 설정 (ReceiveData.py와 동일하게 설정) ---
-SERIAL_PORT = '/dev/ttyS0'  # 또는 '/dev/ttyUSB0' 등 올바른 포트로 변경
+SERIAL_PORT = '/dev/ttyUSB0'  # 또는 '/dev/ttyUSB0' 등 올바른 포트로 변경
 BAUD_RATE = 9600            # 아두이노와 동일하게 9600 보드레이트 설정
 
 
 # --- MQTT 브로커 설정 ---
-MQTT_BROKER = "210.119.12.82"  # 라즈베리 파이에 Mosquitto가 설치되어 있다면 localhost
+MQTT_BROKER = "192.168.0.2"  # 라즈베리 파이에 Mosquitto가 설치되어 있다면 localhost
 MQTT_PORT = 1883           # 기본 MQTT 포트
 MQTT_TOPIC = "sensor/rain_dht" # 데이터를 발행할 토픽 (원하는 이름으로 변경 가능)
 MQTT_CLIENT_ID = "RaspberryPi_SensorPublisher" # 클라이언트 ID (고유해야 함)
@@ -103,7 +103,7 @@ def main():
                     except IndexError as e:
                         print(f"  오류: 시리얼 데이터 파싱 중 인덱스 에러: {line} - {e}")
 
-                time.sleep(0.01) # 짧은 딜레이
+                time.sleep(1) # 짧은 딜레이
 
     except serial.SerialException as e:
         print(f"시리얼 포트 오류: {e}")

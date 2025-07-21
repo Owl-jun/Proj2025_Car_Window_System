@@ -1,4 +1,0 @@
-/home/raspi/owljun/MyQtApp/build/CMakeFiles/MyQtApp.dir
-/home/raspi/owljun/MyQtApp/build/CMakeFiles/edit_cache.dir
-/home/raspi/owljun/MyQtApp/build/CMakeFiles/rebuild_cache.dir
-/home/raspi/owljun/MyQtApp/build/CMakeFiles/MyQtApp_autogen.dir

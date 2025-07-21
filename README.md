@@ -1,6 +1,15 @@
 # Proj2025_Car_Window_System
 전장 S/W 내부 네트워크 시스템 구축
 
+# Directory
+
+|폴더명|설명|
+|:--:|:--:|
+|Arduino|아두이노 소스코드|
+|GUIAPP|Qt GUI App 소스코드|
+|MqTTPubApp|Python 시리얼 통신 및 MqTT Pub App 소스코드|
+
+
 # 프로젝트 개요
 <img width="1715" height="1037" alt="image" src="https://github.com/user-attachments/assets/7fb0bd89-5bc2-4af2-8d71-f4545f968cac" />
 

@@ -18,8 +18,9 @@
 - Raspberry PI 4 (64bit OS)
 - Arduino Uno
 - 7inch Rasp Touch Display
-- 비 감지 센서
-- 스텝 모터 & 드라이버
+- 온 습도 감지 센서 (DHT11)
+- 비 감지 센서 (MD002)
+- 스텝 모터 & 드라이버 (28BYJ-48)
 - 자동차 목업
 - USB A to B (시리얼 통신)
 

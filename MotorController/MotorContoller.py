@@ -7,6 +7,7 @@ import json
 # SET GPIO
 # ========
 M_SIG = 26
+ISRAIN = False
 RUN = False
 DIR = 0
 TARGET_ANGLE = 0
@@ -27,7 +28,7 @@ def open_config(conf):
 # ================
 # Set MQTT BROKER
 # ================
-config = open_config('../secure/config.json')
+config = open_config('./secure/config.json')
 MQTT_BROKER = config["MQTT"]["IP"]
 MQTT_PORT = config["MQTT"]["PORT"]
 MQTT_TOPIC = config["MOTOR"]["TOPIC"] 
@@ -43,12 +44,20 @@ def on_connect(client, userdata, flags, rc):
         print(f"MQTT 브로커 연결 실패 (Result Code: {rc})")
 
 def on_message(client, userdata, msg):
-    global RUN, DIR
+    global RUN, DIR, ISRAIN
     try:
         payload = msg.payload.decode('utf-8').strip()
         val = int(payload)
 
-        if val == 1:
+        if val == 2:
+            print("[MQTT] 비 감지 코드 수신")
+            ISRAIN = True
+
+        elif val == 3:
+            print("[MQTT] 비 그침 코드 수신")
+            ISRAIN = False
+
+        elif val == 1:
             print("[MQTT] UP 명령 수신")
             RUN = True
             DIR = 1
@@ -96,7 +105,8 @@ if __name__ == "__main__":
             if RUN:
                 if DIR == 1:
                     if (TARGET_ANGLE == 180) : pass
-                    else : set_angle(180)  # UP
+                    else : 
+                        set_angle(180)  # UP
                 elif DIR == -1:
                     if (TARGET_ANGLE == 0) : pass
                     else : set_angle(0)  # DOWN

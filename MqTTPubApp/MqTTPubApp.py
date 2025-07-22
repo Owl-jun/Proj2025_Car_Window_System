@@ -20,7 +20,7 @@ BAUD_RATE = 115200
 # ================
 # Set MQTT BROKER
 # ================
-config = open_config('../secure/config.json')
+config = open_config('./secure/config.json')
 MQTT_BROKER = config["MQTT"]["IP"]
 MQTT_PORT = config["MQTT"]["PORT"]
 MQTT_TOPIC = config["PUBAPP"]["TOPIC"] 

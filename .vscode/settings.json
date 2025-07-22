@@ -11,7 +11,8 @@
     "string": "cpp",
     "vector": "cpp",
     "*.moc": "cpp",
-    "qapplication": "cpp"
+    "qapplication": "cpp",
+    "string_view": "cpp"
   },
   "cmake.sourceDirectory": "/home/raspi/owljun/Proj2025_Car_Window_System/GUIApp"
 }

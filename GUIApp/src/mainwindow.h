@@ -27,11 +27,13 @@ private slots:
     void onStopButtonClicked();
     void onDownButtonClicked();
 
+    // 기능
+    void RainDetected();
     // UI 업데이트 관련 슬롯
     void updateCurrentTime(); // 현재 시간 업데이트 슬롯
 private:
     MqttClientWrapper *m_mqttClientWrapper; // Paho MQTT 래퍼 객체
-
+    bool RainStarted;
     // UI 요소들
     QLabel *m_currentTimeLabel;
     QLabel *m_tempLabel;

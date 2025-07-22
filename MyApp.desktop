@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=RainDetected GUI
+Exec=/home/raspi/owljun/Proj2025_Car_Window_System/GUIApp/build/bin/MyApp
+Icon=utilities-terminal  # 원하면 .png 아이콘 경로 지정 가능
+Terminal=false
+StartupNotify=false

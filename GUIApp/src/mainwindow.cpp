@@ -12,6 +12,7 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
+    , RainStarted(false)
 {
     setFixedSize(800, 480);
     setWindowTitle("RainDetected Monitor");
@@ -178,7 +179,7 @@ void MainWindow::setupUi()
 
 void MainWindow::setupMqtt()
 {
-    QFile file("../secure/config.json");
+    QFile file("./secure/config.json");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qWarning("Failed to open JSON file.");
     }
@@ -240,14 +241,32 @@ void MainWindow::onMqttMessageReceived(const QString& topic, const QString& payl
             // ===============
             // 비 올때 핸들링
             // ===============
-            if (obj.contains("digital_rain") && obj.contains("analog_rain") && obj["digital_rain"].toBool() != 0 && obj["analog_rain"].toInt() < 500) {
-                onUpButtonClicked();
+            if (obj.contains("digital_rain") && obj.contains("analog_rain") 
+            && obj["digital_rain"].toInt() == 1 && obj["analog_rain"].toInt() < 500) {
+                RainDetected();
+            }
+            else 
+            {
+                RainStarted = false;
+                m_mqttClientWrapper->publish("control","3");
             }
 
         } else {
             qWarning() << "수신된 페이로드가 유효한 JSON 객체가 아닙니다:" << payload;
         }
     }
+}
+
+void MainWindow::RainDetected()
+{
+    qDebug() << "비 감지!";
+    m_mqttClientWrapper->publish("control","2");
+    if (!RainStarted)
+    {
+        onUpButtonClicked();
+    }
+    RainStarted = true;
+    updateState("STATE : RAINDETECT");
 }
 
 void MainWindow::onMqttError(const QString& errorString)

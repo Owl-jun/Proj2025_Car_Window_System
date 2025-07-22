@@ -127,56 +127,6 @@
     ```
 
 
-## 파이4 부팅시 자동 실행 스크립트 설정
-
-- start.sh
-
-  ```sh
-  #!/bin/bash
-  
-  source /home/raspi/owljun/venv/bin/activate
-  
-  # Mqtt Pub App
-  python /home/raspi/owljun/Proj2025_Car_Window_System/MqTTPubApp/MqTTPubApp.py &
-  
-  # Motor App
-  python /home/raspi/owljun/Proj2025_Car_Window_System/MotorController/MotorContoller.py &
-  
-  # GUI
-  DISPLAY=:0 /home/raspi/owljun/Proj2025_Car_Window_System/GUIApp/build/bin/MyApp
-  
-  exit 0
-  ```
-
-- /etc/systemed/system/myapp.service
-  
-  ```nano
-  [Unit]
-  Description=My Car Window System
-  After=network.target
-  
-  [Service]
-  Type=simple
-  ExecStart=/home/raspi/startup.sh
-  WorkingDirectory=/home/raspi/owljun/Proj2025_Car_Window_System/
-  User=raspi
-  Environment=DISPLAY=:0
-  Restart=always
-  
-  [Install]
-  WantedBy=multi-user.target
-  ```
-
-- 등록
-  
-  ```bash
-  sudo systemctl daemon-reload
-  sudo systemctl enable myapp.service
-  sudo systemctl start myapp.service
-  sudo systemctl status myapp.service
-  ```
-
-
 ## 개발 환경 구축
 
 - python : 기본 python3 + venv 활용 가상환경

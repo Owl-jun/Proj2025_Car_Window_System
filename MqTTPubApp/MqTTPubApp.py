@@ -15,16 +15,16 @@ def open_config(conf):
 # Set Serial Port (/dev/tty*)
 # ===========================
 SERIAL_PORT = '/dev/ttyUSB0'  
-BAUD_RATE = 9600            
+BAUD_RATE = 115200            
 
 # ================
 # Set MQTT BROKER
 # ================
-config = open_config('./config.json')
+config = open_config('../secure/config.json')
 MQTT_BROKER = config["MQTT"]["IP"]
 MQTT_PORT = config["MQTT"]["PORT"]
-MQTT_TOPIC = config["MQTT"]["TOPIC"] 
-MQTT_CLIENT_ID = config["MQTT"]["CLIENT_ID"]
+MQTT_TOPIC = config["PUBAPP"]["TOPIC"] 
+MQTT_CLIENT_ID = config["PUBAPP"]["CLIENT_ID"]
 
 # =====================
 # Define MQTT CALLBACK
@@ -105,7 +105,7 @@ def main():
                     except IndexError as e:
                         print(f"  ERROR: 시리얼 데이터 파싱 중 인덱스 에러: {line} - {e}")
                 # Set Delay (sec)
-                time.sleep(1)
+                time.sleep(0.1)
 
     except serial.SerialException as e:
         print(f"시리얼 포트 오류: {e}")

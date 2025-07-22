@@ -15,7 +15,7 @@ const int DIGITAL_PIN = 2; // D2
 // Rain Sensor Setup
 // ===================
 void setup() {
-  Serial.begin(9600);  // baud rate : 9600
+  Serial.begin(115200);  // baud rate 
   pinMode(DIGITAL_PIN, INPUT);
   dht.begin();
 }

@@ -29,7 +29,6 @@ private slots:
 
     // UI 업데이트 관련 슬롯
     void updateCurrentTime(); // 현재 시간 업데이트 슬롯
-
 private:
     MqttClientWrapper *m_mqttClientWrapper; // Paho MQTT 래퍼 객체
 

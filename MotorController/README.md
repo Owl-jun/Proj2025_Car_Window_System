@@ -11,6 +11,9 @@ Oper Code 정의
 |1|to 180 (UP)|
 |0|STOP|
 |-1|to 0 (DOWN)|
+|2|Rain_Start|
+|3|Rain_End|
+
 
 ## 동작 방식
 

@@ -15,8 +15,18 @@
 - MqTT를 활용한 실시간 네트워크 시스템 구축을 목표로 합니다.
 - MqTT 연동을 통해 쉽게 별도의 프로그램을 추가할 수 있습니다.
 
+---
+
 - 본 프로젝트의 구성도입니다.
-![](https://velog.velcdn.com/images/owljun/post/441c1786-931c-4973-81e8-78ade89c0ac8/image.png)
+  
+  ![](https://velog.velcdn.com/images/owljun/post/441c1786-931c-4973-81e8-78ade89c0ac8/image.png)
+
+---
+
+- 본 프로젝트의 실행 흐름입니다.
+  
+  <img width="683" height="727" alt="image" src="https://github.com/user-attachments/assets/fde276f2-5611-4465-aeb2-104b44ece8cb" />
+
 
 - 실제 자동차 구조가 아닌 가정을 동반한 시뮬레이션 프로젝트입니다.
 - 자동차 내부 디스플레이에 출력되는 터치스크린을 가정하여 그 위에 Raspi4 를 기반으로 프로그램을 구동합니다.

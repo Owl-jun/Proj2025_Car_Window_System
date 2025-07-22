@@ -1,5 +1,5 @@
 #include "mqttclientwrapper.h"
-#include <QDebug> // 디버깅 출력용
+#include <QDebug> 
 #include <QHostInfo> // 호스트 정보 획득용 (현재 사용되지는 않음)
 
 // std::string을 QString으로 변환하는 헬퍼 함수
@@ -36,10 +36,10 @@ void MqttClientWrapper::connectToBroker()
 {
     qDebug() << "MQTT 브로커에 연결 시도 중:" << toQString(m_serverUri);
     try {
-        // connect()는 토큰을 반환하며, 이 토큰으로 연결 상태를 추적할 수 있습니다.
-        // wait()를 호출하여 동기적으로 연결 완료를 기다립니다. (GUI 스레드를 블록할 수 있음)
+        // connect()는 토큰을 반환
+        // wait() 은 BLOCKING 방식
         m_client.connect(m_connOpts, nullptr, *this)->wait();
-        // wait()가 성공하면 on_success가 호출되고 connected() 시그널이 방출됩니다.
+        // wait()가 성공하면 on_success가 호출, connected() 시그널 쏨
     } catch (const mqtt::exception& exc) {
         qCritical() << "MQTT 연결 에러:" << exc.what();
         emit mqttError(QString("연결 실패: ") + exc.what());
@@ -118,9 +118,8 @@ void MqttClientWrapper::connection_lost(const std::string& cause)
 
 void MqttClientWrapper::delivery_complete(mqtt::delivery_token_ptr tok)
 {
+    // 메시지 전달 성공 후 콜백임 
     Q_UNUSED(tok);
-    // 메시지 전달 완료 시 (QoS > 0일 경우) 호출됩니다. 필요에 따라 구현
-    // qDebug() << "MQTT 메시지 전달 완료.";
 }
 
 void MqttClientWrapper::message_arrived(mqtt::const_message_ptr msg) 
@@ -155,7 +154,6 @@ void MqttClientWrapper::on_success(const mqtt::token& tok)
          m_reconnectTimer->stop(); // 연결 성공 시 재연결 타이머 중지
          emit connected(); // Qt 시그널 방출
     } else {
-        // 발행, 구독 등 다른 작업의 성공을 처리 (필요 시)
-        // qDebug() << "MQTT 작업 성공, 토큰 ID:" << tok.get_message_id();
+        // TODO : 발행 혹은 구독 시 로직~
     }
 }

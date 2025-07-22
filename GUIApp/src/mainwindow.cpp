@@ -7,7 +7,8 @@
 #include <QFrame> 
 #include <QJsonDocument> 
 #include <QJsonObject>   
-#include <QJsonValue>    
+#include <QJsonValue>   
+#include <QFile>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -106,7 +107,7 @@ void MainWindow::setupUi()
     QLabel *tempText = new QLabel("TEMP");
     tempText->setStyleSheet("font-size: 32px; font-weight: bold;");
     m_tempLabel = new QLabel("21"); // 초기 값
-    m_tempLabel->setStyleSheet("font-size: 48px; font-weight: bold; color: #3498db;"); // 더 큰 글꼴, 파란색
+    m_tempLabel->setStyleSheet("font-size: 48px; font-weight: bold; color: #3498db;");
     QLabel *tempUnit = new QLabel("도");
     tempUnit->setStyleSheet("font-size: 32px;");
     tempRowLayout->addWidget(tempText);
@@ -118,8 +119,8 @@ void MainWindow::setupUi()
     QHBoxLayout *humiRowLayout = new QHBoxLayout();
     QLabel *humiText = new QLabel("HUMI");
     humiText->setStyleSheet("font-size: 32px; font-weight: bold;");
-    m_humiLabel = new QLabel("34"); // 초기 값
-    m_humiLabel->setStyleSheet("font-size: 48px; font-weight: bold; color: #2ecc71;"); // 더 큰 글꼴, 초록색
+    m_humiLabel = new QLabel("34"); 
+    m_humiLabel->setStyleSheet("font-size: 48px; font-weight: bold; color: #2ecc71;");
     QLabel *humiUnit = new QLabel("%");
     humiUnit->setStyleSheet("font-size: 32px;");
     humiRowLayout->addWidget(humiText);
@@ -135,10 +136,8 @@ void MainWindow::setupUi()
 
     dataLayout->addLayout(tempRowLayout);
     dataLayout->addLayout(humiRowLayout);
-    // dataLayout->addLayout(strLayout);
     dataLayout->addStretch(); // 데이터를 상단에 정렬
-
-    contentLayout->addWidget(dataFrame, 2); // 데이터 프레임에 더 많은 공간 할당 (비율 2)
+    contentLayout->addWidget(dataFrame, 2); 
 
     // 오른쪽 컬럼 (로그)
     QFrame *logFrame = new QFrame();
@@ -179,9 +178,21 @@ void MainWindow::setupUi()
 
 void MainWindow::setupMqtt()
 {
-    // Paho MQTT Client Wrapper 인스턴스 생성
-    // 브로커 주소와 클라이언트 ID를 설정합니다.
-    m_mqttClientWrapper = new MqttClientWrapper("192.168.0.2:1883", "SmartHomeMonitor_Client", this);
+    QFile file("../secure/config.json");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qWarning("Failed to open JSON file.");
+    }
+    QByteArray data = file.readAll();
+    file.close();
+    QJsonParseError parseError;
+    QJsonDocument doc = QJsonDocument::fromJson(data, &parseError);
+    if (parseError.error != QJsonParseError::NoError) {
+        qWarning("JSON parse error: %s", qUtf8Printable(parseError.errorString()));
+    }
+
+    QJsonObject config(doc.object());
+    auto ip = config["MQTT"].toObject()["IP"].toString();
+    m_mqttClientWrapper = new MqttClientWrapper(ip.toStdString(), "GUIAPP_Client", this);
 
     // Wrapper의 시그널을 MainWindow의 슬롯에 연결
     connect(m_mqttClientWrapper, &MqttClientWrapper::connected, this, &MainWindow::onMqttConnected);
@@ -196,24 +207,21 @@ void MainWindow::setupMqtt()
 void MainWindow::onMqttConnected()
 {
     qDebug() << "MQTT 브로커에 연결되었습니다.";
-    // 연결 성공 시 구독할 토픽들을 설정합니다.
-    m_mqttClientWrapper->subscribe("sensor/rain_dht"); // 예시 토픽
-
-    updateState("STATE : CONNECTED"); // 상태 표시 업데이트
+    m_mqttClientWrapper->subscribe("sensor/rain_dht");
+    updateState("STATE : CONNECTED");
 }
 
 void MainWindow::onMqttDisconnected()
 {
     qDebug() << "MQTT 브로커와 연결이 끊어졌습니다.";
-    updateState("STATE : DISCONNECTED"); // 상태 표시 업데이트
+    updateState("STATE : DISCONNECTED"); 
 }
 
 void MainWindow::onMqttMessageReceived(const QString& topic, const QString& payload)
 {
     qDebug() << "MQTT 메시지 수신 - 토픽:" << topic << "페이로드:" << payload;
 
-    if (topic == "sensor/rain_dht") { // <-- 새로운 토픽 처리
-        // JSON 파싱 시작
+    if (topic == "sensor/rain_dht") {
         QJsonDocument doc = QJsonDocument::fromJson(payload.toUtf8());
 
         if (doc.isObject()) {
@@ -221,12 +229,12 @@ void MainWindow::onMqttMessageReceived(const QString& topic, const QString& payl
             
             if (obj.contains("temperature") && obj["temperature"].isDouble()) {
                 double temperature = obj["temperature"].toDouble();
-                updateTemperature(QString::number(temperature, 'f', 1)); // 소수점 첫째 자리까지 표시
+                updateTemperature(QString::number(temperature, 'f', 1)); 
             }
 
             if (obj.contains("humidity") && obj["humidity"].isDouble()) {
                 double humidity = obj["humidity"].toDouble();
-                updateHumidity(QString::number(humidity, 'f', 1)); // 소수점 첫째 자리까지 표시
+                updateHumidity(QString::number(humidity, 'f', 1)); 
             }
             
             // ===============

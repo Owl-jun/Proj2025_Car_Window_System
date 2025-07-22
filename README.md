@@ -25,6 +25,23 @@
 
 ## 시연
 
+- 비 감지 로직
+
+  - D핀의 신호가 1 and analog 신호가 500보다 낮을때 비가 오는것으로 간주합니다.
+    <img width="533" height="142" alt="image" src="https://github.com/user-attachments/assets/ee582b7e-a666-494d-a45a-2df366eaf75d" />
+  
+  - 아래와 같이 데이터가 수신되게 되면 UP버튼이 디폴트로 실행되게 됩니다.
+    <img width="656" height="39" alt="image" src="https://github.com/user-attachments/assets/33528542-1fc7-4762-ac1c-9a27fd315a7b" />
+
+  - 이 로직의 문제점 : 사용자가 의도적으로 DOWN 버튼을 눌렀는데도 비가 온다면 계속 UP이 호출된다.
+    - 해결
+      - 비가 탐지되면 계속해서 UP 버튼 관련 커맨드를 Mqtt에 Publish 하기때문에 의도치 않은 동작이 발생하는 것을 파악.
+      - GUI APP 내부 클래스에 bool flag 변수를 추가하여 최초 탐지시 1회만 창문을 닫는 행위를 Publish 하게끔 메서드를 수정하여 해결.
+      - 이후 비가 그친 것으로 판단되면 flag 변수를 다시 초기화 해주어 안정적인 동작을 하게끔 해주었습니다.
+        
+        <img width="590" height="507" alt="image" src="https://github.com/user-attachments/assets/cdefd3c4-cc3b-440c-9566-9ed06f313bda" />
+
+
 
 
 ## 프로젝트 구성 (H/W)

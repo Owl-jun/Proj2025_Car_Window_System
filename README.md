@@ -18,12 +18,31 @@
 - 본 프로젝트의 구성도입니다.
 ![](https://velog.velcdn.com/images/owljun/post/441c1786-931c-4973-81e8-78ade89c0ac8/image.png)
 
+- 실제 자동차 구조가 아닌 가정을 동반한 시뮬레이션 프로젝트입니다.
 - 자동차 내부 디스플레이에 출력되는 터치스크린을 가정하여 그 위에 Raspi4 를 기반으로 프로그램을 구동합니다.
 - Raspi4 는 ECU의 역할을 한다고 가정합니다, Pi4 가 센서 데이터수집을 위한 전원(아두이노) , 디스플레이 구동을 위한 전원을 공급합니다.
 - 모든 기기는 하나의 AP로 구성하여 중심이 되는 서버 MCU에 MqTT 서버를 구동합니다. (여기서는 Windows 데스크탑이 그 역할을 합니다.)
 - 내부 기기들은 필요에 따라 서버 MCU의 MqTT 서버와 시리얼통신을 통해 통신합니다.
 
+## 프로젝트 구성 (H/W)
+
+- Raspberry PI 4 (64bit OS)
+- Arduino Uno
+- 7inch Rasp Touch Display
+- 온 습도 감지 센서 (DHT11)
+- 비 감지 센서 (MD002)
+- 서보모터 (sg90)
+- USB A to B (시리얼 통신)
+- IPTIME 공유기 (AP)
+
 ## 시연
+
+- 실제 모습
+
+  <img src="./img/19.jpg" width = 400 height = 500>
+  <img src="./img/20.jpg" width = 400 height = 500>
+
+---
 
 - 비 감지 로직
 
@@ -41,19 +60,71 @@
         
         <img width="590" height="507" alt="image" src="https://github.com/user-attachments/assets/cdefd3c4-cc3b-440c-9566-9ed06f313bda" />
 
+---
 
+- 부팅(시동ON)시 자동으로 백그라운드 프로세스 및 GUI앱 실행
 
+  - 셸 스크립트 작성 (백그라운드 프로그램)
 
-## 프로젝트 구성 (H/W)
+    ```sh
+    #!/bin/bash
 
-- Raspberry PI 4 (64bit OS)
-- Arduino Uno
-- 7inch Rasp Touch Display
-- 온 습도 감지 센서 (DHT11)
-- 비 감지 센서 (MD002)
-- 서보모터 (sg90)
-- USB A to B (시리얼 통신)
-- IPTIME 공유기 (AP)
+    # venv
+    source /home/raspi/owljun/Proj2025_Car_Window_System/venv/bin/activate
+
+    # Mqtt Pub App
+    python /home/raspi/owljun/Proj2025_Car_Window_System/MqTTPubApp/MqTTPubApp.py &
+
+    # Motor App
+    python /home/raspi/owljun/Proj2025_Car_Window_System/MotorController/MotorContoller.py &
+
+    # GUI
+    DISPLAY=:0
+
+    while true; do sleep 1; done
+    ```
+
+  - GUI APP
+    ```sh
+    [Unit]
+    Description=My Qt GUI App
+    After=graphical-session.target
+
+    [Service]
+    ExecStart=/home/raspi/startup.sh
+    WorkingDirectory=/home/raspi/owljun/Proj2025_Car_Window_System
+    Restart=on-failure
+
+    [Install]
+    WantedBy=default.target
+    ```
+
+  - 서비스 작성 (~/.config/systemd/user/myapp.service)
+
+    ```service
+    [Unit]
+    Description=GUI App
+    After=graphical-session.target
+
+    [Service]
+    ExecStart=/home/raspi/startup.sh
+    WorkingDirectory=/home/raspi/owljun/Proj2025_Car_Window_System
+    Restart=on-failure
+
+    [Install]
+    WantedBy=default.target
+    ```
+
+  - 실행설정
+
+    ```bash
+    sudo systemctl daemon-reload
+    sudo systemctl enable myapp.service
+    sudo systemctl status myapp.service
+    systemctl --user daemon-reload
+    systemctl --user enable guiapp.service
+    systemctl --user start guiapp.service
+    ```
 
 
 ## 파이4 부팅시 자동 실행 스크립트 설정

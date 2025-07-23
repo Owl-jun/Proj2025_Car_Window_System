@@ -19,7 +19,8 @@
 
 - 본 프로젝트의 구성도입니다.
   
-  ![](https://velog.velcdn.com/images/owljun/post/441c1786-931c-4973-81e8-78ade89c0ac8/image.png)
+  <img width="1138" height="599" alt="image" src="https://github.com/user-attachments/assets/afde8928-5013-43c0-9954-b79e795d4e07" />
+
 
 ---
 
